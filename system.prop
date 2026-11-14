@@ -130,13 +130,6 @@ persist.data.profile_update=true
 #added by huwenxia.wt for chk 10532 20181107
 persist.radio.force_on_dc=true
 
-persist.omacp.enable=true
-persist.mmssupportcp.enable=true
-
-#Modified rcs to 1 by weitang for PAN-18193 on 2019/02/20
-#close imsrcsd
-persist.rcs.supported=1
-
 #Modified rcs to 1 by weitang for PAN-18193 on 2019/02/20
 #close imsrcsd
 persist.rcs.supported=1
