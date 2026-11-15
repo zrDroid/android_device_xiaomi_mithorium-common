@@ -158,8 +158,6 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.mapper@4.0-impl-qti-display \
     gralloc.msm8937
 
-PRODUCT_VENDOR_PROPERTIES += ro.hardware.vulkan=adreno
-
 PRODUCT_PACKAGES += \
     lineage.frameworks.displayservice@1.0.vendor
 
@@ -177,6 +175,15 @@ PRODUCT_PACKAGES += \
     libtinyxml \
     vendor.display.config@1.11.vendor \
     vendor.display.config@2.0.vendor
+
+# Qualcomm graphics blobs live under /vendor/lib{,64}/egl; provide legacy paths.
+PRODUCT_PACKAGES += \
+    libEGL_adreno_libEGL_adreno_symlink32 \
+    libGLESv2_adreno_libGLESv2_adreno_symlink32 \
+    libq3dtools_adreno_libq3dtools_adreno_symlink32 \
+    libEGL_adreno_libEGL_adreno_symlink64 \
+    libGLESv2_adreno_libGLESv2_adreno_symlink64 \
+    libq3dtools_adreno_libq3dtools_adreno_symlink64
 
 $(call soong_config_set_bool,surfaceflinger,register_displayservice,true)
 
