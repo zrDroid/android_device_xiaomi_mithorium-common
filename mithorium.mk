@@ -146,19 +146,26 @@ endif
 PRODUCT_PACKAGES += \
     XiaomiParts
 
-# Display
+# Display - Mi-Thorium QSSI
+# Qualcomm 3.x/4.x allocator and mapper ship their own VINTF fragments.
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.allocator@2.0-impl \
-    android.hardware.graphics.allocator@2.0-service \
-    android.hardware.graphics.mapper@2.0-impl-2.1 \
+    vendor.qti.hardware.display.allocator-service \
+    vendor.qti.hardware.display.mapper@2.0.vendor \
+    vendor.qti.hardware.display.mapper@3.0.vendor \
+    vendor.qti.hardware.display.mapper@4.0.vendor \
+    vendor.qti.hardware.display.mapperextensions@1.1.vendor \
+    android.hardware.graphics.mapper@3.0-impl-qti-display \
+    android.hardware.graphics.mapper@4.0-impl-qti-display \
     gralloc.msm8937
+
+PRODUCT_VENDOR_PROPERTIES += ro.hardware.vulkan=adreno
 
 PRODUCT_PACKAGES += \
     lineage.frameworks.displayservice@1.0.vendor
 
 PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.1-service \
-    hwcomposer.qcom
+    hwcomposer.msm8937
 
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.memtrack-service
@@ -488,5 +495,9 @@ PRODUCT_PACKAGES += \
     firmware_WCNSS_qcom_wlan_nv.bin_symlink \
     firmware_WCNSS_wlan_dictionary.dat_symlink
 
+# Select Mi-Thorium's QSSI display HAL and coordinated audio/media HAL paths.
+$(call inherit-product, hardware/mithorium/mithorium_qcom_hals.mk)
+
 # Inherit the proprietary files
-$(call inherit-product, vendor/xiaomi/mithorium-common/mithorium-common-vendor.mk)
+$(call inherit-product, vendor/xiaomi/mithorium-common-4.19/mithorium-common-4.19-vendor.mk)
+$(call inherit-product, vendor/xiaomi/mithorium-common-graphics/mithorium-common-graphics-vendor.mk)
