@@ -84,6 +84,17 @@ BOARD_QTI_CAMERA_32BIT_ONLY := true
 TARGET_SUPPORT_HAL1 := false
 TARGET_TS_MAKEUP := true
 
+# Display - Mi-Thorium QSSI
+# Select the Qualcomm allocator/mapper 3.x/4.x stack used by Mi-Thorium.
+TARGET_USES_Q_DISPLAY_STACK := false
+TARGET_USES_GRALLOC1 := true
+TARGET_USES_GRALLOC4 := true
+TARGET_USES_HWC2 := true
+TARGET_USES_ION := true
+TARGET_USES_COLOR_METADATA := true
+TARGET_USES_QTI_MAPPER_2_0 := true
+TARGET_USES_QTI_MAPPER_EXTENSIONS_1_1 := true
+
 # GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
 LOC_HIDL_VERSION := 4.0
@@ -169,4 +180,4 @@ TARGET_FIRMWARE_WLAN_MAC_BIN_SYMLINK_TARGET ?= /mnt/vendor/persist/wlan_mac.bin
 $(call soong_config_set,MITHORIUM_FIRMWARE_WLAN_MAC_BIN,SYMLINK_TARGET,$(TARGET_FIRMWARE_WLAN_MAC_BIN_SYMLINK_TARGET))
 
 # Inherit from the proprietary version
-include vendor/xiaomi/mithorium-common/BoardConfigVendor.mk
+include vendor/xiaomi/mithorium-common-4.19/BoardConfigVendor.mk
