@@ -1,3 +1,6 @@
 allow system_app fm_radio_device:chr_file r_file_perms;
 
 binder_call(system_app, hal_rcsservice)
+
+# Qualcomm data-services (system_app) queries the IMS UCE HIDL service.
+allow system_app hal_imsrcsd_hwservice:hwservice_manager find;
