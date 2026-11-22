@@ -648,6 +648,13 @@ PRODUCT_PACKAGES += \
     firmware_WCNSS_wlan_dictionary.dat_symlink
 endif
 
+# Override the proprietary perfservice seccomp policy for kernel 4.19.
+# The stock policy blocks lseek and causes perfservice to exit with SIGSYS.
+ifeq ($(TARGET_KERNEL_VERSION),4.19)
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/seccomp_policy/perfservice.policy:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/seccomp_policy/perfservice.policy
+endif
+
 # Inherit the proprietary files
 ifeq ($(TARGET_KERNEL_VERSION),4.9)
 $(call inherit-product, vendor/xiaomi/mithorium-common/mithorium-common-vendor.mk)
