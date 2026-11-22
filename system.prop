@@ -102,9 +102,6 @@ ro.cutoff_voltage_mv=3400
 persist.omacp.enable=true
 persist.mmssupportcp.enable=true
 
-persist.omacp.enable=true
-persist.mmssupportcp.enable=true
-
 # end of device/qcom/T89571AA3/system.prop
 
 ro.vendor.qti.va_aosp.support=1

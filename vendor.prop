@@ -130,7 +130,6 @@ vendor.display.enable_default_color_mode=1
 
 # Display Properties as per treble compliance
 vendor.gralloc.enable_fb_ubwc=1
-vendor.display.disable_skip_validate=1
 
 ### END Labeled as vendor in device/qcom/sepolicy-legacy-um
 
@@ -155,11 +154,6 @@ persist.camera.privapp.list=org.codeaurora.snapcam
 
 #sensors-hal debug
 persist.vendor.debug.sensors.hal=i
-
-# +Bug494803,gongmingjie.wt,add,20191024,bt checklist
-# make bt mac address can repeat read/write
-persist.vendor.bluetooth.modem_nv_support=true
-# -Bug494803,gongmingjie.wt,add,20191024,bt checklist
 
 #PAN-26598.add by cdzk.2020.12.21.Front and rear video without flash
 persist.vendor.camera.hal1.enable=1
