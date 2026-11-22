@@ -30,10 +30,6 @@ persist.radio.force_on_dc=true
 #close imsrcsd
 persist.rcs.supported=1
 
-#Modified rcs to 1 by weitang for PAN-18193 on 2019/02/20
-#close imsrcsd
-persist.rcs.supported=1
-
 # +bug 421786 add by libingkun.wt not protected report the SAR_REPORT 20191009*/
 persist.function_for_sar=1
 persist.function_for_sar_log_trigger=0
