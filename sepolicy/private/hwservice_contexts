@@ -1,0 +1,4 @@
+# The Lineage-renamed framework display service is registered by SurfaceFlinger.
+# Platform policy already grants the display_service_server attribute access
+# to fwk_display_hwservice, but only labels the old android.frameworks name.
+lineage.frameworks.displayservice::IDisplayService    u:object_r:fwk_display_hwservice:s0
