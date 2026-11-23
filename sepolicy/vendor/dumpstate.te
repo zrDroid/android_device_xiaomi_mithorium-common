@@ -1,0 +1,4 @@
+# The framework dumpstate process reads MMC host "stat" files when
+# gathering storage diagnostics. This is distinct from the vendor
+# hal_dumpstate_default domain, which already has similar read access.
+r_dir_file(dumpstate, sysfs_mmc_host)
