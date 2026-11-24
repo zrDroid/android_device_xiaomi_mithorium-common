@@ -1,23 +1,15 @@
-#include <stdint.h>
+#include <android/sensor.h>
+
+namespace {
+// Keep libsensorndkbridge in DT_NEEDED even with --as-needed and section GC.
+// Legacy blobs resolve the NDK APIs through this dependency, so do not define
+// ASensor*/ALooper* stubs here: they would shadow the real implementations.
+__attribute__((used, retain)) const auto sensor_bridge_dependency =
+        &ASensorManager_getInstanceForPackage;
+}
 
 namespace android {
-    // libandroid.so
-    extern "C" void ALooper_forThread() {}
-    extern "C" void ALooper_pollOnce() {}
-    extern "C" void ALooper_prepare() {}
-    extern "C" void ALooper_wake() {}
-    extern "C" void ASensor_getMaxRange() {}
-    extern "C" void ASensor_getMinDelay() {}
-    extern "C" void ASensor_getName() {}
-    extern "C" void ASensor_getVendor() {}
-    extern "C" void ASensorEventQueue_disableSensor() {}
-    extern "C" void ASensorEventQueue_enableSensor() {}
-    extern "C" void ASensorEventQueue_getEvents() {}
-    extern "C" void ASensorEventQueue_setEventRate() {}
-    extern "C" void ASensorManager_createEventQueue() {}
-    extern "C" void ASensorManager_destroyEventQueue() {}
-    extern "C" void ASensorManager_getDefaultSensor() {}
-    extern "C" void ASensorManager_getInstanceForPackage() {}
+    // NDK sensor and looper symbols come from the libsensorndkbridge dependency.
     // libandroid_runtime.so
     extern "C" void _ZNK7android6Sensor11getMaxValueEv() {}
 }
