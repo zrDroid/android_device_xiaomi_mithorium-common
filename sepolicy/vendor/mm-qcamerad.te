@@ -8,3 +8,10 @@ allow mm-qcamerad self:qipcrtr_socket { create getattr read setopt write };
 allow mm-qcamerad sysfs_graphics:file r_file_perms;
 allow mm-qcamerad sysfs_jpeg:file r_file_perms;
 allow mm-qcamerad fwk_sensor_hwservice:hwservice_manager find;
+
+# libsensorndkbridge uses the framework AIDL sensor manager on Android 17.
+binder_use(mm-qcamerad)
+allow mm-qcamerad fwk_sensor_service:service_manager find;
+# Sensor events are callbacks from system_server into the camera daemon.
+# The client-to-system_server binder_call is supplied by qcom's common policy.
+binder_call(system_server, mm-qcamerad)
