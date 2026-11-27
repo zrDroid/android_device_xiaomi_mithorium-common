@@ -54,7 +54,8 @@ on post-fs
 
     start vendor.qseecomd
     exec - system system -- /vendor/bin/init.qti.qseecomd.sh
-    write /dev/ipa 1
+    # The legacy /dev/ipa node is absent on land with the 4.19 kernel.
+    # Do not open a nonexistent char device and trigger file-create denials.
 
 on post-fs-data
     mkdir /data/tombstones 0771 system system
